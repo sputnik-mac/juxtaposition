@@ -124,6 +124,11 @@ PostSchema.index({
 	removed: 1
 });
 
+PostSchema.index({
+	message_to_pid: 1,
+	created_at: 1
+});
+
 PostSchema.method<HydratedPostDocument>('del', async function del(reason: string, pid: number) {
 	this.removed = true;
 	this.removed_by = pid;
